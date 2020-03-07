@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellations", "Constellations\Constellations.csproj", "{858292BD-3BBD-4905-B489-30BA27F93F61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo2D", "Demo2D\Demo2D.csproj", "{47F5F742-0989-4CB4-9E28-6779C877B761}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{858292BD-3BBD-4905-B489-30BA27F93F61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{858292BD-3BBD-4905-B489-30BA27F93F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{858292BD-3BBD-4905-B489-30BA27F93F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{858292BD-3BBD-4905-B489-30BA27F93F61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47F5F742-0989-4CB4-9E28-6779C877B761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47F5F742-0989-4CB4-9E28-6779C877B761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47F5F742-0989-4CB4-9E28-6779C877B761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47F5F742-0989-4CB4-9E28-6779C877B761}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B4B9195-C0E6-41BD-8A87-395B8D6A317D}
+	EndGlobalSection
+EndGlobal
