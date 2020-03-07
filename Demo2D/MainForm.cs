@@ -49,6 +49,7 @@ ladislav.heller@gmail.com
             var sf1 = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
             var sf2 = new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Near };
             var sf3 = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Near };
+            var sf4 = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Near };
 
             var lastDE = 90.0;
             var lastRA = 0.0;
@@ -139,16 +140,14 @@ ladislav.heller@gmail.com
                 }
 
                 // draw constellation names
-                if (rbNorth.Checked) dataSrc1 = NorthConstellations;
-                if (rbSouth.Checked) dataSrc1 = SouthConstellations;
+                dataSrc1 = rbNorth.Checked ? NorthConstellations : SouthConstellations;
                 foreach (var key in dataSrc1.Keys) {
                     var c = dataSrc1[key];
                     gr.DrawString(key, fc, Brushes.Blue, c.Centroid.X, c.Centroid.Y, sf1);
                 }
 
                 // draw constellation boundaries
-                if (rbNorth.Checked) dataSrc2 = NorthSegments;
-                if (rbSouth.Checked) dataSrc2 = SouthSegments;
+                dataSrc2 = rbNorth.Checked ? NorthSegments : SouthSegments;
                 foreach (var key in dataSrc2.Keys) gr.DrawLines(black1, dataSrc2[key]);
 
                 // highlight current last constellation
@@ -167,10 +166,14 @@ ladislav.heller@gmail.com
                 // draw equator and arc of great circle at 0h
                 gr.DrawArc(blue, -AR, -AR, 2 * AR, 2 * AR, 0, 360);
                 gr.DrawLine(green, 0, 0, AR, 0);
+                for (var i = 10; i < 90; i += 10) {
+                    var ds = rbNorth.Checked ? (90 - i).ToString() : (i - 90).ToString();
+                    gr.DrawString(ds, fh, Brushes.Black, i + 0.2f, 0.2f, sf4);
+                    gr.DrawString(ds, fh, Brushes.Red, i, 0, sf4);
+                }
 
                 // draw hour circle ticks and hours
-                if (rbNorth.Checked) TickMarks = TickMarksNorth;
-                if (rbSouth.Checked) TickMarks = TickMarksSouth;
+                TickMarks = rbNorth.Checked ? TickMarksNorth : TickMarksSouth;
                 foreach (var key in TickMarks.Keys) {
                     gr.DrawLine(tick, TickMarks[key][0].X, TickMarks[key][0].Y, TickMarks[key][1].X, TickMarks[key][1].Y);
 

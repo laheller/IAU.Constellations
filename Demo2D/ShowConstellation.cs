@@ -42,6 +42,10 @@ namespace Demo2D {
 
                 // draw the boundary and grid only after rotation
                 gr.RotateTransform(tbRotation.Value);
+
+                // rectangle below will show the bounds of visible area
+                gr.DrawRectangle(Pens.Green, -ox / SF, -oy / SF, 2 * ox / SF, 2 * oy / SF);
+
                 for (var i = 0; i < 360; i += 15) gr.DrawLine(grid, -centroid.X, -centroid.Y, 180 * (float)Math.Cos(Deg2Rad(i)) - centroid.X, 180 * (float)Math.Sin(Deg2Rad(i)) - centroid.Y);
                 for (var i = 10; i <= 150; i += 10) gr.DrawArc(grid, -i - centroid.X, -i - centroid.Y, 2 * i, 2 * i, 0, 360);
                 gr.DrawPolygon(black1, newconst);
