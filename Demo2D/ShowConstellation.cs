@@ -49,6 +49,7 @@ namespace Demo2D {
                 gr.TranslateTransform(ox, oy);
                 gr.ScaleTransform(SF, SF);
 
+                // draw border and constellation name
                 var rect = new RectangleF((M - ox) / SF, (M - oy) / SF, 2 * (ox - M) / SF, 2 * (oy - M) / SF);
                 gr.DrawRectangle(black1, rect.X, rect.Y, rect.Width, rect.Height);
                 gr.DrawString(key, f1, Brushes.Black, 0, 0, sf);
@@ -59,38 +60,11 @@ namespace Demo2D {
                 // rectangle below will show the bounds of visible area
                 //gr.DrawRectangle(Pens.Green, -ox / SF, -oy / SF, 2 * ox / SF, 2 * oy / SF);
 
-                for (var i = 0; i < GreatCirclePoints.Count; i++) {
-                    //gr.DrawLine(grid, -centroid.X, -centroid.Y, 180 * (float)Math.Cos(Deg2Rad(i)) - centroid.X, 180 * (float)Math.Sin(Deg2Rad(i)) - centroid.Y);
-                    var EndPoint = GreatCirclePoints[i];
-                    gr.DrawLine(grid, StartPoint, EndPoint);
-
-                    /*
-                    var j = _cp.Y > 0.0f ? i : 24 - i;
-
-                    // calculate coordinates of numbers at left and right side of rectangle
-                    var xp = 0.0f;
-                    if (EndPoint.X < 0) xp = rect.Left;
-                    else if (EndPoint.X > 0) xp = rect.Right;
-                    var y1 = GetY(StartPoint, EndPoint, xp);
-                    var py1 = new PointF(xp, y1);
-                    if (rect.Contains(py1)) {
-                        gr.DrawString(j.ToString(), f1, Brushes.Black, py1, sf);
-                        gr.DrawString((j >= 12 ? j - 12 : j + 12).ToString(), f1, Brushes.Black, new PointF(rect.Right, -y1), sf);
-                    }
-
-                    // calculate coordinates of numbers at to and bottom side of rectange
-                    var yp = 0.0f;
-                    if (EndPoint.Y < 0) yp = rect.Top;
-                    else if (EndPoint.Y > 0) yp = rect.Bottom;
-                    var x1 = GetX(StartPoint, EndPoint, yp);
-                    var px1 = new PointF(x1, yp);
-                    if (rect.Contains(px1)) {
-                        gr.DrawString(j.ToString(), f1, Brushes.Black, px1, sf);
-                        gr.DrawString((j >= 12 ? j - 12 : j + 12).ToString(), f1, Brushes.Black, new PointF(-x1, rect.Bottom), sf);
-                    }
-                    */
-                }
+                // draw grid
+                for (var i = 0; i < GreatCirclePoints.Count; i++) gr.DrawLine(grid, StartPoint, GreatCirclePoints[i]);
                 for (var i = 10; i <= 150; i += 10) gr.DrawArc(grid, -i - centroid.X, -i - centroid.Y, 2 * i, 2 * i, 0, 360);
+
+                // draw constellation boundary
                 gr.DrawPolygon(black1, newconst);
 
                 spPanels.Panel1.Invalidate();
@@ -98,12 +72,22 @@ namespace Demo2D {
 
             btnSave.Click += (s1, e1) => {
                 var parent = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                var sfd = new SaveFileDialog() {
+                    DefaultExt = "png",
+                    FileName = key,
+                    Filter = "PNG|*.png",
+                    InitialDirectory = parent,
+                    Title = "Enter image file name..."
+                };
+                if (sfd.ShowDialog() != DialogResult.OK) return;
+
                 var control = spPanels.Panel1;
                 try {
                     using (var bmp = new Bitmap(control.Width, control.Height)) {
                         control.DrawToBitmap(bmp, new Rectangle(0, 0, control.Width, control.Height));
-                        bmp.Save(Path.Combine(parent, key + ".png"), ImageFormat.Png);
+                        bmp.Save(Path.Combine(parent, sfd.FileName), ImageFormat.Png);
                     }
+                    Close();
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message, "Error");

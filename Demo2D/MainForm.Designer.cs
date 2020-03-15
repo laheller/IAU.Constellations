@@ -34,6 +34,7 @@
             this.constellationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showConstellationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.performanceTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,6 +137,7 @@
             this.constellationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.findShowToolStripMenuItem,
             this.showConstellationToolStripMenuItem,
+            this.performanceTestToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.constellationsToolStripMenuItem.Name = "constellationsToolStripMenuItem";
             this.constellationsToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
@@ -152,6 +154,12 @@
             this.showConstellationToolStripMenuItem.Name = "showConstellationToolStripMenuItem";
             this.showConstellationToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.showConstellationToolStripMenuItem.Text = "Show constellation...";
+            // 
+            // performanceTestToolStripMenuItem
+            // 
+            this.performanceTestToolStripMenuItem.Name = "performanceTestToolStripMenuItem";
+            this.performanceTestToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.performanceTestToolStripMenuItem.Text = "Performance test...";
             // 
             // exitToolStripMenuItem
             // 
@@ -210,6 +218,7 @@
         private System.Windows.Forms.CheckBox cbGrid;
         private System.Windows.Forms.ToolStripMenuItem findShowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showConstellationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem performanceTestToolStripMenuItem;
     }
 }
 

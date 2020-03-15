@@ -229,6 +229,11 @@ ladislav.heller@gmail.com
                 var dlg = new ShowConstellation(CurrentConstellation);
                 dlg.ShowDialog();
             };
+
+            performanceTestToolStripMenuItem.Click += (s7, e7) => {
+                var dlg = new PerfTest();
+                dlg.ShowDialog();
+            };
         }
 
         private string FormatDMS(double value) {
