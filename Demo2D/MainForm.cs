@@ -146,6 +146,12 @@ ladislav.heller@gmail.com
                     gr.DrawString(key, fc, Brushes.Blue, c.Centroid.X, c.Centroid.Y, sf1);
                 }
 
+                // draw stars
+                //foreach (var key in KnownStars.Names.Keys) {
+                //    var star = KnownStars.Names[key];
+                //    var coord = polar2xy(star.Coordinate);
+                //}
+
                 // draw constellation boundaries
                 dataSrc2 = rbNorth.Checked ? NorthSegments : SouthSegments;
                 foreach (var key in dataSrc2.Keys) gr.DrawLines(black1, dataSrc2[key]);
