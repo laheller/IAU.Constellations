@@ -45,7 +45,7 @@ ladislav.heller@gmail.com
             var ff = new Font(FontFamily.GenericMonospace, 6.0f, FontStyle.Bold);
             var fh = new Font(FontFamily.GenericMonospace, 3.0f, FontStyle.Italic);
             var fc = new Font(FontFamily.GenericMonospace, 2.0f, FontStyle.Regular);
-            
+
             var sf1 = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
             var sf2 = new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Near };
             var sf3 = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Near };
@@ -139,22 +139,18 @@ ladislav.heller@gmail.com
                     gr.SetClip(p);
                 }
 
-                // draw constellation names
-                dataSrc1 = rbNorth.Checked ? NorthConstellations : SouthConstellations;
-                foreach (var key in dataSrc1.Keys) {
-                    var c = dataSrc1[key];
-                    gr.DrawString(key, fc, Brushes.Blue, c.Centroid.X, c.Centroid.Y, sf1);
+                if (cbBoundaries.Checked) {
+                    // draw constellation names
+                    dataSrc1 = rbNorth.Checked ? NorthConstellations : SouthConstellations;
+                    foreach (var key in dataSrc1.Keys) {
+                        var c = dataSrc1[key];
+                        gr.DrawString(key, fc, Brushes.Blue, c.Centroid.X, c.Centroid.Y, sf1);
+                    }
+
+                    // draw constellation boundaries
+                    dataSrc2 = rbNorth.Checked ? NorthSegments : SouthSegments;
+                    foreach (var key in dataSrc2.Keys) gr.DrawLines(black1, dataSrc2[key]);
                 }
-
-                // draw stars
-                //foreach (var key in KnownStars.Names.Keys) {
-                //    var star = KnownStars.Names[key];
-                //    var coord = polar2xy(star.Coordinate);
-                //}
-
-                // draw constellation boundaries
-                dataSrc2 = rbNorth.Checked ? NorthSegments : SouthSegments;
-                foreach (var key in dataSrc2.Keys) gr.DrawLines(black1, dataSrc2[key]);
 
                 // highlight current last constellation
                 if (dataSrc1.Keys.Contains(CurrentConstellation)) {
@@ -196,8 +192,8 @@ ladislav.heller@gmail.com
                     if (D > 3.0f) {
                         gr.DrawString("r = " + lastR.ToString("F"), ff, Brushes.Black, pct[0].X / 2, pct[0].Y / 2, sf2);
                         gr.DrawArc(red, -D, -D, 2 * D, 2 * D, 0, -(float)R);
-                        var AX = D * Cos(Deg2Rad(R/2));
-                        var AY = -D * Sin(Deg2Rad(R/2));
+                        var AX = D * Cos(Deg2Rad(R / 2));
+                        var AY = -D * Sin(Deg2Rad(R / 2));
                         gr.DrawString("φ = " + R.ToString("F"), ff, Brushes.Black, (float)AX, (float)AY, sf3);
                     }
                 }
@@ -240,6 +236,28 @@ ladislav.heller@gmail.com
                 var dlg = new PerfTest();
                 dlg.ShowDialog();
             };
+
+            //display blinking notification
+            var notifyLabel = new Label() {
+                Name = "notifyLabel",
+                Top = 30,
+                Left = 0,
+                Width = 300,
+                Text = "Click inside the big circle!",
+                BackColor = Color.Blue,
+                ForeColor = Color.White,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Font = new Font(FontFamily.GenericMonospace, 12.0f, FontStyle.Regular)
+            };
+            Controls.Add(notifyLabel);
+            var nn = 10;
+            var tmr = new System.Timers.Timer(500.0) { AutoReset = true, Enabled = false };
+            tmr.Elapsed += (s8, e8) => {
+                notifyLabel.Visible = !notifyLabel.Visible;
+                nn--;
+                if (nn == 0) { tmr.Stop(); notifyLabel.Visible = false; }
+            };
+            tmr.Start();
         }
 
         private string FormatDMS(double value) {

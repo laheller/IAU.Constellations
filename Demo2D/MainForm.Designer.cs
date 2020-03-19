@@ -27,6 +27,7 @@
             this.cbClip = new System.Windows.Forms.CheckBox();
             this.rbNorth = new System.Windows.Forms.RadioButton();
             this.gbOptions = new System.Windows.Forms.GroupBox();
+            this.cbBoundaries = new System.Windows.Forms.CheckBox();
             this.cbGrid = new System.Windows.Forms.CheckBox();
             this.cbGuide = new System.Windows.Forms.CheckBox();
             this.rbSouth = new System.Windows.Forms.RadioButton();
@@ -59,7 +60,7 @@
             // 
             this.rbNorth.AutoSize = true;
             this.rbNorth.Checked = true;
-            this.rbNorth.Location = new System.Drawing.Point(6, 102);
+            this.rbNorth.Location = new System.Drawing.Point(6, 129);
             this.rbNorth.Name = "rbNorth";
             this.rbNorth.Size = new System.Drawing.Size(64, 21);
             this.rbNorth.TabIndex = 1;
@@ -70,6 +71,7 @@
             // gbOptions
             // 
             this.gbOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbOptions.Controls.Add(this.cbBoundaries);
             this.gbOptions.Controls.Add(this.cbGrid);
             this.gbOptions.Controls.Add(this.cbGuide);
             this.gbOptions.Controls.Add(this.cbClip);
@@ -81,6 +83,18 @@
             this.gbOptions.TabIndex = 2;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = "Options";
+            // 
+            // cbBoundaries
+            // 
+            this.cbBoundaries.AutoSize = true;
+            this.cbBoundaries.Checked = true;
+            this.cbBoundaries.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbBoundaries.Location = new System.Drawing.Point(6, 102);
+            this.cbBoundaries.Name = "cbBoundaries";
+            this.cbBoundaries.Size = new System.Drawing.Size(102, 21);
+            this.cbBoundaries.TabIndex = 2;
+            this.cbBoundaries.Text = "Boundaries";
+            this.cbBoundaries.UseVisualStyleBackColor = true;
             // 
             // cbGrid
             // 
@@ -107,7 +121,7 @@
             // rbSouth
             // 
             this.rbSouth.AutoSize = true;
-            this.rbSouth.Location = new System.Drawing.Point(6, 129);
+            this.rbSouth.Location = new System.Drawing.Point(6, 156);
             this.rbSouth.Name = "rbSouth";
             this.rbSouth.Size = new System.Drawing.Size(66, 21);
             this.rbSouth.TabIndex = 1;
@@ -221,6 +235,7 @@
         private System.Windows.Forms.ToolStripMenuItem findShowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showConstellationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem performanceTestToolStripMenuItem;
+        private System.Windows.Forms.CheckBox cbBoundaries;
     }
 }
 
