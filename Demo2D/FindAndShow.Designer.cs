@@ -23,14 +23,15 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindAndShow));
             this.btnOK = new System.Windows.Forms.Button();
             this.cbxStars = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblRA = new System.Windows.Forms.Label();
             this.lblDE = new System.Windows.Forms.Label();
             this.grpCoordinate = new System.Windows.Forms.GroupBox();
-            this.rbList = new System.Windows.Forms.RadioButton();
             this.rbManual = new System.Windows.Forms.RadioButton();
+            this.rbList = new System.Windows.Forms.RadioButton();
             this.tbRA = new System.Windows.Forms.TextBox();
             this.tbDE = new System.Windows.Forms.TextBox();
             this.grpCoordinate.SuspendLayout();
@@ -95,6 +96,16 @@
             this.grpCoordinate.TabStop = false;
             this.grpCoordinate.Text = "Coordinates";
             // 
+            // rbManual
+            // 
+            this.rbManual.AutoSize = true;
+            this.rbManual.Location = new System.Drawing.Point(6, 48);
+            this.rbManual.Name = "rbManual";
+            this.rbManual.Size = new System.Drawing.Size(123, 21);
+            this.rbManual.TabIndex = 1;
+            this.rbManual.Text = "Enter manually";
+            this.rbManual.UseVisualStyleBackColor = true;
+            // 
             // rbList
             // 
             this.rbList.AutoSize = true;
@@ -106,16 +117,6 @@
             this.rbList.TabStop = true;
             this.rbList.Text = "From list by a star";
             this.rbList.UseVisualStyleBackColor = true;
-            // 
-            // rbManual
-            // 
-            this.rbManual.AutoSize = true;
-            this.rbManual.Location = new System.Drawing.Point(6, 48);
-            this.rbManual.Name = "rbManual";
-            this.rbManual.Size = new System.Drawing.Size(123, 21);
-            this.rbManual.TabIndex = 1;
-            this.rbManual.Text = "Enter manually";
-            this.rbManual.UseVisualStyleBackColor = true;
             // 
             // tbRA
             // 
@@ -147,6 +148,7 @@
             this.Controls.Add(this.btnOK);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FindAndShow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FindAndShow";

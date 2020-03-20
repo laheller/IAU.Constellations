@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PerfTest));
             this.lblNum = new System.Windows.Forms.Label();
             this.btnPerf = new System.Windows.Forms.Button();
             this.numCalls = new System.Windows.Forms.NumericUpDown();
@@ -95,6 +96,7 @@
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.ssPerf);
             this.Controls.Add(this.btnPerf);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PerfTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Performane Test";
