@@ -48,11 +48,12 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>csc.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="csc.pfx" />
+    <None Include="laheller_sha256.pfx" />
     <None Include="packages.config" />
     <None Include="Sign.bat" />
   </ItemGroup>
@@ -67,7 +68,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(ProjectDir)Sign.bat" "$(ProjectDir)csc.pfx" "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>"$(ProjectDir)Sign.bat" "$(ProjectDir)laheller_sha256.pfx" "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
