@@ -1,6 +1,11 @@
 # IAU.Constellations
 A cross platform .NET library to work with IAU constellations
 
+Package feed
+============
+Library was published to github and is available at following NuGet feed:
+https://nuget.pkg.github.com/laheller/index.json
+
 Features
 ========
 - Static methods and data, no need to instantiate classes
