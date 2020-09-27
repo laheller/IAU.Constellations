@@ -1,10 +1,10 @@
 # IAU.Constellations
 A cross platform .NET library to work with IAU constellations
 
-Package feed
+NuGet package
 ============
-NuGet feed:
-https://nuget.pkg.github.com/laheller/index.json
+Feed available at:
+https://www.myget.org/F/laheller/api/v3/index.json
 
 Features
 ========
